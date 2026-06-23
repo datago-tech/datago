@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import MarketInsights from "./components/MarketInsights";
 
 const leagues = ["Todos", "Liga MX", "Premier League", "La Liga", "Champions League", "Copa Libertadores", "Mundial"];
 
@@ -248,7 +249,11 @@ export default function Home() {
           </div>
 
           <div>
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Noticias en tendencia</p>
+<div className="mb-4">
+  <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Señales del mercado</p>
+  <MarketInsights />
+</div>
+<p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Noticias en tendencia</p>
             <div className="bg-white border border-gray-100 rounded-2xl p-4">
               {news.map((n, i) => (
                 <div key={i} className={`flex gap-2.5 py-2.5 ${i < news.length - 1 ? "border-b border-gray-100" : ""}`}>
