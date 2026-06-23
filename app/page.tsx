@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 
 const leagues = ["Todos", "Liga MX", "Premier League", "La Liga", "Champions League", "Copa Libertadores", "Mundial"];
 
