@@ -106,7 +106,7 @@ function TagPill({ label, type }: { label: string; type: string }) {
   return (
     <Link href={href} className={`text-xs px-2.5 py-0.5 rounded-full border cursor-pointer hover:opacity-80 ${styles[type]}`}>{label}</Link>
   );
-} 
+}
 
 export default function Home() {
   const [activeLeague, setActiveLeague] = useState("Todos");
@@ -122,7 +122,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Nav */}
       <nav className="bg-white border-b border-gray-100 px-6 flex items-center gap-5 h-13 sticky top-0 z-50">
         <div className="text-lg font-medium text-gray-900 tracking-tight">data<span className="text-emerald-600">go</span></div>
         <div className="flex-1 max-w-md flex items-center bg-gray-50 border border-gray-200 rounded-full px-4 h-9 gap-2">
@@ -136,25 +135,22 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Leagues bar */}
       <div className="bg-white border-b border-gray-100 px-6 flex gap-0 overflow-x-auto">
         {leagues.map(l => (
-          <button key={l} onClick={() => setActiveLeague(l)}
+          <Link key={l}
+            href={l === "Todos" ? "/" : `/liga/${l.toLowerCase().replace(/ /g, "-")}`}
+            onClick={() => setActiveLeague(l)}
             className={`px-4 py-2.5 text-xs whitespace-nowrap border-b-2 transition-colors ${activeLeague === l ? "text-emerald-600 border-emerald-500 font-medium" : "text-gray-500 border-transparent hover:text-gray-800"}`}>
             {l}
-          </button>
+          </Link>
         ))}
       </div>
 
       <div className="px-6 py-5 max-w-6xl">
-        {/* Hero */}
         <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Destacado</p>
         <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden mb-4 flex">
-          {/* Left panel */}
           <div className="w-72 min-w-72 p-5 border-r border-gray-100 flex flex-col">
-            <div className="text-xs text-gray-400 mb-3 flex items-center gap-1">
-              🏆 {slide.league}
-            </div>
+            <div className="text-xs text-gray-400 mb-3 flex items-center gap-1">🏆 {slide.league}</div>
             <div className="flex items-center gap-3 mb-4">
               <div className="flex flex-col items-center gap-1 flex-1">
                 <Shirt color={slide.homeColor} color2={slide.homeColor2} size={36} />
@@ -175,7 +171,6 @@ export default function Home() {
                 <span className="text-xs text-gray-400">Visitante</span>
               </div>
             </div>
-            {/* Tri-bar */}
             <div className="flex justify-between text-xs mb-1">
               <span className="font-medium" style={{ color: "#B8960C" }}>{slide.homeTeam} {slide.homeProb}%</span>
               <span className="text-gray-400">Empate {slide.drawProb}%</span>
@@ -199,7 +194,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right panel — chart */}
           <div className="flex-1 p-5 flex flex-col">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs text-gray-500">Probabilidad de victoria — últimas 72 horas</span>
@@ -222,7 +216,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Dots */}
         <div className="flex justify-center gap-1.5 mb-5">
           {heroSlides.map((_, i) => (
             <button key={i} onClick={() => setSlideIndex(i)}
@@ -230,7 +223,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Insights + News */}
         <div className="grid grid-cols-4 gap-4">
           <div className="col-span-3">
             <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">Insights por relevancia</p>
